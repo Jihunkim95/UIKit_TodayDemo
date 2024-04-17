@@ -18,11 +18,27 @@ extension ReminderListViewController {
         contentConfiguration.secondaryText = reminder.dueDate.dayAndTimeText
         cell.contentConfiguration = contentConfiguration
     
-        var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
+        var doneButtonConfiguartion = doneButtonConfiguartion(for: reminder)
+        doneButtonConfiguartion.tintColor = .todayListCellDoneButtonTint
+        cell.accessories = [
+            .customView(configuration: doneButtonConfiguartion), .disclosureIndicator(displayed: .always)
+        ]
         
+        var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
         backgroundConfiguration.backgroundColor = .todayListCellBackground
         cell.backgroundConfiguration = backgroundConfiguration
-        
+    }
+    
+    private func doneButtonConfiguartion(for reminder: Reminder)
+    -> UICellAccessory.CustomViewConfiguration {
+        let symbolName = reminder.isComplete ? "circle.fill" : "circle"
+        let symbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title1)
+        let image = UIImage(systemName: symbolName, withConfiguration: symbolConfiguration)
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        return UICellAccessory.CustomViewConfiguration(
+        customView: button, placement: .leading(displayed: .always)
+        )
     }
     
 }
