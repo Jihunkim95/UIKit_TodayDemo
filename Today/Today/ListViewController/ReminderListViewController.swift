@@ -8,10 +8,11 @@
 import UIKit
 
 class ReminderListViewController: UICollectionViewController {
-    typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
-    // 스냅샷 적용
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, String>
     var dataSource: DataSource!
+//    typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
+//    // 스냅샷 적용
+//    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, String>
+//    var dataSource: DataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +23,8 @@ class ReminderListViewController: UICollectionViewController {
         
         // 목록Layout에 데이터 소스 구성
         // 새로운 cell 등록
-        let cellRegistration = UICollectionView.CellRegistration {
-            (cell: UICollectionViewListCell, indexPath: IndexPath, itemIdentifier: String) in
-            // 항목에 해당하는 알림 검색
-            let reminder = Reminder.sampleData[indexPath.item]
-            //셀의 기본 콘텐츠 구성을 검색
-            var contentConfiguration = cell.defaultContentConfiguration()
-            contentConfiguration.text = reminder.title
-            cell.contentConfiguration = contentConfiguration
-        }
+        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegisterationHandler)
+
         // 데이터 소스 생성
         dataSource = DataSource(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: String) in
@@ -42,11 +36,10 @@ class ReminderListViewController: UICollectionViewController {
         snapshot.appendSections([0])
         snapshot.appendItems(Reminder.sampleData.map{$0.title})
         dataSource.apply(snapshot)
-        
         collectionView.dataSource = dataSource
     }
     
-    //목록 Layout
+    //목록 Layout 생서
     private func listLayout() -> UICollectionViewCompositionalLayout {
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
         listConfiguration.showsSeparators = false
