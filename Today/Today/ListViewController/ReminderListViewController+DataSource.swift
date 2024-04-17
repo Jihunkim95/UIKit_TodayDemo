@@ -17,6 +17,12 @@ extension ReminderListViewController {
         contentConfiguration.text = reminder.title
         contentConfiguration.secondaryText = reminder.dueDate.dayAndTimeText
         cell.contentConfiguration = contentConfiguration
+    
+        var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
+        
+        backgroundConfiguration.backgroundColor = .todayListCellBackground
+        cell.backgroundConfiguration = backgroundConfiguration
+        
     }
     
 }

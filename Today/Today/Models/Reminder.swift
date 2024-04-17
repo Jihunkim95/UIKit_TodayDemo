@@ -20,32 +20,32 @@ struct Reminder {
 extension Reminder {
     static var sampleData = [
         Reminder(
-            title: "Submit reimbursement report", dueDate: Date().addingTimeInterval(800.0),
-            notes: "Don't forget about taxi receipts"),
+            title: "비용 보고서 제출", dueDate: Date().addingTimeInterval(800.0),
+            notes: "택시 영수증 잊지 마세요"),
         Reminder(
-            title: "Code review", dueDate: Date().addingTimeInterval(14000.0),
-            notes: "Check tech specs in shared folder", isComplete: true),
+            title: "코드 리뷰", dueDate: Date().addingTimeInterval(14000.0),
+            notes: "공유 폴더에서 기술 사양 확인", isComplete: true),
         Reminder(
-            title: "Pick up new contacts", dueDate: Date().addingTimeInterval(24000.0),
-            notes: "Optometrist closes at 6:00PM"),
+            title: "새 콘택트렌즈 수령", dueDate: Date().addingTimeInterval(24000.0),
+            notes: "안과는 오후 6시에 문을 닫습니다"),
         Reminder(
-            title: "Add notes to retrospective", dueDate: Date().addingTimeInterval(3200.0),
-            notes: "Collaborate with project manager", isComplete: true),
+            title: "회고록에 노트 추가", dueDate: Date().addingTimeInterval(3200.0),
+            notes: "프로젝트 매니저와 협업", isComplete: true),
         Reminder(
-            title: "Interview new project manager candidate",
-            dueDate: Date().addingTimeInterval(60000.0), notes: "Review portfolio"),
+            title: "새 프로젝트 매니저 후보 인터뷰",
+            dueDate: Date().addingTimeInterval(60000.0), notes: "포트폴리오 검토"),
         Reminder(
-            title: "Mock up onboarding experience", dueDate: Date().addingTimeInterval(72000.0),
-            notes: "Think different"),
+            title: "온보딩 경험 모형 작업", dueDate: Date().addingTimeInterval(72000.0),
+            notes: "차별화된 접근 방식 고려"),
         Reminder(
-            title: "Review usage analytics", dueDate: Date().addingTimeInterval(83000.0),
-            notes: "Discuss trends with management"),
+            title: "사용자 분석 리뷰", dueDate: Date().addingTimeInterval(83000.0),
+            notes: "경영진과 트렌드 논의"),
         Reminder(
-            title: "Confirm group reservation", dueDate: Date().addingTimeInterval(92500.0),
-            notes: "Ask about space heaters"),
+            title: "단체 예약 확인", dueDate: Date().addingTimeInterval(92500.0),
+            notes: "난방기 사용 가능 여부 확인"),
         Reminder(
-            title: "Add beta testers to TestFlight", dueDate: Date().addingTimeInterval(101000.0),
-            notes: "v0.9 out on Friday")
+            title: "TestFlight에 베타 테스터 추가", dueDate: Date().addingTimeInterval(101000.0),
+            notes: "금요일에 v0.9 배포")
     ]
 }
 #endif
