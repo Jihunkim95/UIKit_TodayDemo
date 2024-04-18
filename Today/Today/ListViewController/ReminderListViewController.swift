@@ -9,10 +9,7 @@ import UIKit
 
 class ReminderListViewController: UICollectionViewController {
     var dataSource: DataSource!
-//    typealias DataSource = UICollectionViewDiffableDataSource<Int, String>
-//    // 스냅샷 적용
-//    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, String>
-//    var dataSource: DataSource!
+    var reminders: [Reminder] = Reminder.sampleData
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +24,12 @@ class ReminderListViewController: UICollectionViewController {
 
         // 데이터 소스 생성
         dataSource = DataSource(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: String) in
+            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Reminder.ID) in
             return collectionView.dequeueConfiguredReusableCell(
                 using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         // 스냅샷 생성으로 코드 보이기
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(Reminder.sampleData.map{$0.title})
-        dataSource.apply(snapshot)
+        updateSnapshot()
         collectionView.dataSource = dataSource
     }
     
